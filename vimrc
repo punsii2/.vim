@@ -1,11 +1,45 @@
 " v1.0.0
+" +-----------------------------------------------------------------------+
+" |  Vundle                                                               |
+" +-----------------------------------------------------------------------+
+
+" Use vim defaults
+set nocompatible
+
+" Must be off before Vundle runs
+filetype off
+
+" Set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Fast file navigation XXX Needs Ruby installation
+" Plugin 'git://git.wincent.com/command-t.git'
+
+" Add all Plugins before this
+call vundle#end()            " required
+
+" Reenable filetype
+filetype plugin indent on
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 " +-----------------------------------------------------------------------+
 " |  General                                                              |
 " +-----------------------------------------------------------------------+
 
-" Use vim defaults
-set nocompatible
+" Reenable filetype
+filetype plugin indent on
 
 " Enable syntax highlighting
 syntax enable
@@ -24,8 +58,6 @@ set mouse=a
 
 " Show current mode (INSERT/REPLACE/...)
 set showmode
-
-filetype plugin indent on
 
 " No exec
 set secure
