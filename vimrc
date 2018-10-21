@@ -33,12 +33,12 @@ Plugin 'w0rp/ale'
 
 " Colorscheme
 Plugin 'altercation/vim-colors-solarized'
+" Neat Status Line
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " Tags
 Plugin 'taglist.vim'
-
-" Neat Status Line
-Plugin 'vim-airline/vim-airline'
 
 " Pair braces gracefully
 Plugin 'jiangmiao/auto-pairs'
