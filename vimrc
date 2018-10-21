@@ -34,6 +34,9 @@ Plugin 'w0rp/ale'
 " Colorscheme
 Plugin 'altercation/vim-colors-solarized'
 
+" Tags
+Plugin 'taglist.vim'
+
 " Neat Status Line
 Plugin 'vim-airline/vim-airline'
 
