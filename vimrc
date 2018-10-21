@@ -34,8 +34,12 @@ Plugin 'w0rp/ale'
 " Colorscheme
 Plugin 'altercation/vim-colors-solarized'
 
-" Show tags on sidebar
-Plugin 'taglist.vim'
+" Neat Status Line
+Plugin 'vim-airline/vim-airline'
+
+" Pair braces gracefully
+Plugin 'jiangmiao/auto-pairs'
+
 set tags=./tags;			" search tags files upwards
 set csto=1				" prefer tags DBs over cscope DBs
 let Tlist_WinWidth = 50
