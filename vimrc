@@ -28,6 +28,9 @@ call vundle#begin()
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Asynchronous Lint Engine (ALE)
+Plugin 'w0rp/ale'
+
 " Colorscheme
 Plugin 'altercation/vim-colors-solarized'
 
