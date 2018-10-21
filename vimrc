@@ -1,9 +1,21 @@
-" v1.0.0
 " +-----------------------------------------------------------------------+
 " |  Vundle                                                               |
 " +-----------------------------------------------------------------------+
 
-" Use vim defaults
+" Setting up Vundle - the vim plugin bundler
+let vundleIsSetup=1
+let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
+
+" Clone Vundle manually if not present
+if !filereadable(vundle_readme)
+	echo "Installing Vundle.."
+	echo ""
+	silent !mkdir -p ~/.vim/bundle
+	silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	let vundleIsSetup=0
+endif
+
+" Vim.
 set nocompatible
 
 " Must be off before Vundle runs
@@ -16,14 +28,21 @@ call vundle#begin()
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Colorscheme
+Plugin 'altercation/vim-colors-solarized'
+
+" Install plugins after fresh start
+if vundleIsSetup == 0
+	echo "Installing Vundles, please ignore key map error messages"
+	echo ""
+	:PluginInstall
+endif
+
 " Fast file navigation XXX Needs Ruby installation
 " Plugin 'git://git.wincent.com/command-t.git'
 
 " Add all Plugins before this
-call vundle#end()            " required
-
-" Reenable filetype
-filetype plugin indent on
+call vundle#end()
 
 " Brief help
 " :PluginList       - lists configured plugins
@@ -37,6 +56,9 @@ filetype plugin indent on
 " +-----------------------------------------------------------------------+
 " |  General                                                              |
 " +-----------------------------------------------------------------------+
+
+" Vim.
+set nocompatible
 
 " Reenable filetype
 filetype plugin indent on
