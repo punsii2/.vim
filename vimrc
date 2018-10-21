@@ -225,7 +225,7 @@ noremap <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 noremap <F3> :TlistToggle<cr><C-w>10h
 noremap <F4> :TlistToggle<cr>
 call togglebg#map("")
-map <F5> :ToggleBG<cr>
+map <silent> <F5> :ToggleBG<cr>
 	\ :execute 'call CustomHi()'<cr>
 
 " map <F> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
