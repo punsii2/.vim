@@ -183,8 +183,17 @@ set background=light
 " set if terminal colors are not set
 " let g:solarized_termcolors=256
 colorscheme solarized
+let g:airline_theme='solarized'
 
-function! CustomHi()
+function! Airline_solar_adjust()
+	if &background == 'light'
+		let g:airline_solarized_bg='light'
+	else
+		let g:airline_solarized_bg='dark'
+	endif
+endfunction
+
+function! Custom_hi()
 	" Highlight column 81
 	set colorcolumn=81
 
@@ -194,7 +203,13 @@ function! CustomHi()
 	match TrailingWhitespace /\s\+$/
 endfunction
 
-call CustomHi()
+function! Refresh_custom_hi()
+	call Airline_solar_adjust()
+	AirlineRefresh
+	call Custom_hi()
+endfunction
+
+call Custom_hi()
 
 " Show matches (braces, quotes etc.) briefly
 set showmatch
@@ -226,7 +241,7 @@ noremap <F3> :TlistToggle<cr><C-w>10h
 noremap <F4> :TlistToggle<cr>
 call togglebg#map("")
 map <silent> <F5> :ToggleBG<cr>
-	\ :execute 'call CustomHi()'<cr>
+	\ :execute 'call Refresh_custom_hi()'<cr>
 
 " map <F> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
