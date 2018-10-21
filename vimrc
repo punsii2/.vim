@@ -229,12 +229,18 @@ set number
 " |  Mappings                                                             |
 " +-----------------------------------------------------------------------+
 
-" courser at bottom
+" Split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Courser at bottom
 vnoremap y y`]
-" courser at last position
+" Courser at last position
 " vmap y ygv<Esc>
 
-" open definition in new tab
+" Open definition in new tab
 noremap <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 noremap <F3> :TlistToggle<cr><C-w>10h
@@ -245,7 +251,7 @@ map <silent> <F5> :ToggleBG<cr>
 
 " map <F> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
-" remove trailing whitespace, dont highlight while searching and restore
+" Remove trailing whitespace, dont highlight while searching and restore
 " search-register and cursor position afterwards.
 noremap <silent> <F7> :let _pos = getcurpos() <Bar>
 	\ :let _s=@/ <Bar>
