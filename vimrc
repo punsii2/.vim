@@ -31,6 +31,13 @@ Plugin 'VundleVim/Vundle.vim'
 " Colorscheme
 Plugin 'altercation/vim-colors-solarized'
 
+" Show tags on sidebar
+Plugin 'taglist.vim'
+set tags=./tags;			" search tags files upwards
+set csto=1				" prefer tags DBs over cscope DBs
+let Tlist_WinWidth = 50
+let Tlist_Close_On_Select=1
+
 " Install plugins after fresh start
 if vundleIsSetup == 0
 	echo "Installing Vundles, please ignore key map error messages"
@@ -63,9 +70,6 @@ set nocompatible
 " Reenable filetype
 filetype plugin indent on
 
-" Enable syntax highlighting
-syntax enable
-
 " Explicitly define xterm as environment
 behave xterm
 
@@ -84,25 +88,33 @@ set showmode
 " No exec
 set secure
 
-" Highlight column 81
-if exists("&colorcolumn")
-    set colorcolumn=81
-    hi ColorColumn ctermbg = 3*
-endif
-
-set laststatus=2 " status
-set modified
+" Flashing lights...
+" XXX not sure about this one
 set visualbell
 
 " Representation of nvisible characters, if :set list
 set listchars=tab:\>-,trail:.
-
 " Show listchars
 set list
 
 " Saved history
 set history=2048
 set undolevels=2048
+
+" Use global clipboard
+set clipboard=unnamedplus
+
+" Open a splitted window to the right
+set splitright
+
+" Tab settings
+set noexpandtab
+" Size of real Tabs
+set tabstop=8
+" Indent amount when using cindent, >>, ..
+set shiftwidth=8
+" Indent amount when using TAB
+set softtabstop=4
 
 " +-----------------------------------------------------------------------+
 " |  Search                                                               |
@@ -111,31 +123,40 @@ set undolevels=2048
 " Highlight search
 set hlsearch
 
-" Ignore case
-set ignorecase
-
-" Match case if searchstring starts with uppercase
-set smartcase
-
 " Start incremental search on typing
 set incsearch
 
-
-""" text display
+" Match case if searchstring starts with uppercase
+" smartcase doesn't work without ignorecase
+set ignorecase
+set smartcase
 
 " Show information about current command
 set showcmd
 
+" Read file when changed only outside of vim
 set autoread
+
+" Where to break lines at 'breakat' chars
 set breakat=\
 set linebreak
-set showbreak=>>
-set wrapmargin=2
-behave xterm
 
-""" Editing
+" 'Showbreak' is displayed to the left of wrapping lines
+set showbreak=>>
+" Distance from right border before wrapping starts
+" Probably not needed
+" set wrapmargin=2
+
+" Break after 80 chars
 set textwidth=80
-set backspace=indent,eol,start "allow backspacing over everything
+
+" Allow backspacing over everything
+set backspace=indent,eol,start
+
+" automatically indent on next line
+set autoindent
+" try to guess beginning of next line
+set smartindent
 
 " Settings for perl.vim
 let perl_want_scope_in_variables = 1
@@ -146,77 +167,66 @@ let perl_want_scope_in_variables = 1
 " |  Syntaxhighlighting                                                   |
 " +-----------------------------------------------------------------------+
 
-" CLUDWIG:
-" user interface {{{1
-set background=dark			" dark background for dark UI theme
-set nohlsearch				" do not highlight matches
-set showmatch				" show matches briefly
-set autoindent				" automatically indent on next line
-set smartindent				" try to guess beginning of next line
-set ruler				" status line in all windows
-set number				" turn on line numbering
-set cursorline				" highlight current line
-set guioptions-=m			" remove menu bar
-set guioptions-=T			" remove toolbar
-set guioptions-=r			" remove right-hand scroll bar
-set guioptions-=l			" remove left-hand scroll bar
-set guioptions-=b			" remove bottom-hand scroll bar
-hi Statement gui=NONE cterm=NONE term=NONE
-hi Normal guifg=lightgrey guibg=Black ctermbg=Black
-hi CursorLine cterm=NONE ctermfg=NONE ctermbg=Black guibg=Gray15
-hi OverLength ctermbg=red guibg=red
-match OverLength /\%81v.\+/
-hi TrailingWhitespace ctermbg=red guibg=red
-match TrailingWhitespace /\s\+$/
-" }}}
+" Solarized Plugin
+syntax enable
+set background=light
+" set if terminal colors are not set
+" let g:solarized_termcolors=256
+colorscheme solarized
 
-" highlight extra whitespaces
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\v\s+$| +\ze\t|\S\zs\t+ +|^\s*( {8})+/
+function! CustomHi()
+	" Highlight column 81
+	set colorcolumn=81
 
-set noexpandtab
+	hi OverLength ctermbg=red guibg=red
+	match OverLength /\%>80v.\+/
+	hi TrailingWhitespace ctermbg=red guibg=red
+	match TrailingWhitespace /\s\+$/
+endfunction
 
-" Size of real Tabs
-set tabstop=8
+call CustomHi()
 
-" Indent amount when using cindent, >>, ..
-set shiftwidth=8
+" Show matches (braces, quotes etc.) briefly
+set showmatch
 
-" Indent amount when using TAB
-set softtabstop=4
+" Always display statusline in all windows
+set laststatus=2
+" Show coursor position in status line
+set ruler
+" Show line numbers
+set number
 
-" Use global clipboard
-set clipboard=unnamedplus
-
-" open a splitted window to the right
-set splitright
-
-" Plugin taglist
-set tags=./tags;			" search tags files upwards
-set csto=1				" prefer tags DBs over cscope DBs
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-let Tlist_WinWidth = 50
-let Tlist_Close_On_Select=1
+" " highlight extra whitespaces
+" highlight ExtraWhitespace ctermbg=red guibg=red
+" match ExtraWhitespace /\v\s+$| +\ze\t|\S\zs\t+ +|^\s*( {8})+/
 
 " +-----------------------------------------------------------------------+
 " |  Mappings                                                             |
 " +-----------------------------------------------------------------------+
-" open definition in new tab
-map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
 " courser at bottom
-vmap y y`]
+vnoremap y y`]
 " courser at last position
 " vmap y ygv<Esc>
-map <F3> :TlistToggle<cr><C-w>h
-map <F4> :TlistToggle<cr>
-map <F5> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+" open definition in new tab
+noremap <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+noremap <F3> :TlistToggle<cr><C-w>10h
+noremap <F4> :TlistToggle<cr>
+call togglebg#map("")
+map <F5> :ToggleBG<cr>
+	\ :execute 'call CustomHi()'<cr>
+
+" map <F> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
 " remove trailing whitespace, dont highlight while searching and restore
 " search-register and cursor position afterwards.
 noremap <silent> <F7> :let _pos = getcurpos() <Bar>
- \ :let _s=@/ <Bar>
- \ :%s/\s\+$//e <Bar>
- \ :let @/=_s <Bar>
- \ :nohl <Bar>
- \ :unlet _s <Bar>
- \ :call setpos('.', _pos) <Bar>
- \ :unlet _pos <CR>
+	\ :let _s=@/ <Bar>
+	\ :%s/\s\+$//e <Bar>
+	\ :let @/=_s <Bar>
+	\ :nohl <Bar>
+	\ :unlet _s <Bar>
+	\ :call setpos('.', _pos) <Bar>
+	\ :unlet _pos <CR>
