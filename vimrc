@@ -127,7 +127,7 @@ set shiftwidth=8
 set softtabstop=4
 
 " +-----------------------------------------------------------------------+
-" |  Search                                                               |
+" |  Misc                                                                 |
 " +-----------------------------------------------------------------------+
 
 " Highlight search
@@ -146,6 +146,9 @@ set showcmd
 
 " Read file when changed only outside of vim
 set autoread
+
+" Keep lines above or below cursor
+set scrolloff=7
 
 " Where to break lines at 'breakat' chars
 set breakat=\
@@ -167,6 +170,10 @@ set backspace=indent,eol,start
 set autoindent
 " try to guess beginning of next line
 set smartindent
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
 
 " Settings for perl.vim
 let perl_want_scope_in_variables = 1
@@ -234,6 +241,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Enable folding with the spacebar
+nnoremap <space> za
 
 " Courser at bottom
 vnoremap y y`]
