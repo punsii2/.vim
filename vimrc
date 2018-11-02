@@ -30,6 +30,11 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Asynchronous Lint Engine (ALE)
 Plugin 'w0rp/ale'
+let g:ale_echo_msg_format = '%linter%: "%s"'
+let g:ale_loclist_msg_format = '%linter%: "%s"'
+
+" Use Openbsd codestyle
+Plugin 'ninjin/vim-openbsd'
 
 " Colorscheme
 Plugin 'altercation/vim-colors-solarized'
@@ -39,6 +44,9 @@ Plugin 'vim-airline/vim-airline-themes'
 
 " Tags
 Plugin 'taglist.vim'
+
+" Cscope from cludwig@
+Plugin 'chrissicool/cscope_maps'
 
 " Pair braces gracefully
 Plugin 'jiangmiao/auto-pairs'
@@ -118,13 +126,13 @@ set clipboard=unnamedplus
 set splitright
 
 " Tab settings
-set noexpandtab
-" Size of real Tabs
-set tabstop=8
-" Indent amount when using cindent, >>, ..
-set shiftwidth=8
-" Indent amount when using TAB
-set softtabstop=4
+" set noexpandtab
+" " Size of real Tabs
+" set tabstop=8
+" " Indent amount when using cindent, >>, ..
+" set shiftwidth=8
+" " Indent amount when using TAB
+" set softtabstop=4
 
 " +-----------------------------------------------------------------------+
 " |  Misc                                                                 |
@@ -236,6 +244,10 @@ set number
 " |  Mappings                                                             |
 " +-----------------------------------------------------------------------+
 
+" Jump to middle when searching
+nnoremap n nzz
+nnoremap N Nzz
+
 " Split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -251,12 +263,12 @@ vnoremap y y`]
 " vmap y ygv<Esc>
 
 " Open definition in new tab
-noremap <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+" noremap <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 noremap <F3> :TlistToggle<cr><C-w>10h
 noremap <F4> :TlistToggle<cr>
 call togglebg#map("")
-map <silent> <F5> :ToggleBG<cr>
+noremap <silent> <F5> :ToggleBG<cr>
 	\ :execute 'call Refresh_custom_hi()'<cr>
 
 " map <F> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
