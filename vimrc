@@ -33,6 +33,11 @@ Plugin 'w0rp/ale'
 let g:ale_echo_msg_format = '%linter%: "%s"'
 let g:ale_loclist_msg_format = '%linter%: "%s"'
 
+" Git wrapper
+Plugin 'tpope/vim-fugitive'
+" Pair braces
+Plugin 'tpope/vim-surround'
+
 " Use Openbsd codestyle
 Plugin 'ninjin/vim-openbsd'
 
@@ -48,8 +53,6 @@ Plugin 'taglist.vim'
 " Cscope from cludwig@
 Plugin 'chrissicool/cscope_maps'
 
-" Pair braces gracefully
-Plugin 'jiangmiao/auto-pairs'
 
 set tags=./tags;			" search tags files upwards
 set csto=1				" prefer tags DBs over cscope DBs
