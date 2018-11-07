@@ -47,6 +47,9 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+" ToDo List
+Plugin 'aserebryakov/vim-todo-lists'
+
 " Tags
 Plugin 'taglist.vim'
 
