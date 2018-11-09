@@ -37,6 +37,8 @@ let g:ale_loclist_msg_format = '%linter%: "%s"'
 Plugin 'tpope/vim-fugitive'
 " Pair braces
 Plugin 'tpope/vim-surround'
+" Repeat plugin mappings
+Plugin 'tpope/vim-repeat'
 
 " Use Openbsd codestyle
 Plugin 'ninjin/vim-openbsd'
