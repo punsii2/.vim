@@ -93,6 +93,8 @@ call vundle#end()
 " +-----------------------------------------------------------------------+
 " |  General                                                              |
 " +-----------------------------------------------------------------------+
+" change <Leader> key
+let mapleader=","
 
 " Vim.
 set nocompatible
@@ -263,10 +265,6 @@ set number
 " |  Mappings                                                             |
 " +-----------------------------------------------------------------------+
 
-" Jump to middle when searching
-nnoremap n nzz
-nnoremap N Nzz
-
 " Split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -284,17 +282,16 @@ vnoremap y y`]
 " Open definition in new tab
 " noremap <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-noremap <F3> :TlistToggle<cr><C-w>10h
-noremap <F4> :TlistToggle<cr>
+noremap <leader>l :TlistToggle<cr><C-w>10h
 call togglebg#map("")
-noremap <silent> <F5> :ToggleBG<cr>
+noremap <silent> <leader>c :ToggleBG<cr>
 	\ :execute 'call Refresh_custom_hi()'<cr>
 
 " map <F> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " Remove trailing whitespace, dont highlight while searching and restore
 " search-register and cursor position afterwards.
-noremap <silent> <F7> :let _pos = getcurpos() <Bar>
+noremap <silent> <leader>w :let _pos = getcurpos() <Bar>
 	\ :let _s=@/ <Bar>
 	\ :%s/\s\+$//e <Bar>
 	\ :let @/=_s <Bar>
