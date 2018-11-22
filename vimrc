@@ -41,7 +41,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 
 " Use Openbsd codestyle
-Plugin 'ninjin/vim-openbsd'
+" Plugin 'ninjin/vim-openbsd'
 
 " Colorscheme
 Plugin 'altercation/vim-colors-solarized'
@@ -138,13 +138,16 @@ set clipboard=unnamedplus
 set splitright
 
 " Tab settings
-" set noexpandtab
-" " Size of real Tabs
-" set tabstop=8
-" " Indent amount when using cindent, >>, ..
-" set shiftwidth=8
-" " Indent amount when using TAB
-" set softtabstop=4
+set noexpandtab
+" Size of real Tabs
+set tabstop=8
+" Indent amount when using cindent, >>, ..
+set shiftwidth=8
+" Indent amount when using TAB
+set softtabstop=8
+" cindent (i have no idea what these lines actually mean)
+set cindent
+set cinoptions=:0,l1,t0,g0,0 fo=tcqlron
 
 " +-----------------------------------------------------------------------+
 " |  Misc                                                                 |
