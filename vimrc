@@ -49,6 +49,10 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+" LaTeX support
+Plugin 'vim-latex/vim-latex'
+let g:tex_flavor='latex'
+
 " ToDo List
 Plugin 'aserebryakov/vim-todo-lists'
 
