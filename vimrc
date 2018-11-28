@@ -60,8 +60,12 @@ Plugin 'vim-airline/vim-airline-themes'
 " LaTeX support
 Plugin 'vim-latex/vim-latex'
 let g:tex_flavor='latex'
+let g:Tex_CompileRule_dvi='latex -interaction=nonstopmode
+                               \ -src-specials
+                               \ -output-directory=../obj
+                               \ $*'
 let g:Tex_DefaultTargetFormat='dvi'
-let g:Tex_ViewRule_dvi='xdvi'
+let g:Tex_ViewRuleComplete_dvi='xdvi ../obj/$* &'
 
 " ToDo List
 Plugin 'aserebryakov/vim-todo-lists'
@@ -292,10 +296,13 @@ vnoremap y y`]
 " Open definition in new tab
 " noremap <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
+" ctags shortcut might be usefull
 " map <F> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
+" Toggle TagList-window
 noremap          <leader>l :TlistToggle<cr><C-w>10h
 
+" Toggle light/dark theme
 call togglebg#map("")
 noremap <silent> <leader>c :ToggleBG<cr>
 	\ :execute 'call Refresh_custom_hi()'<cr>
