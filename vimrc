@@ -33,6 +33,14 @@ Plugin 'w0rp/ale'
 let g:ale_echo_msg_format = '%linter%: "%s"'
 let g:ale_loclist_msg_format = '%linter%: "%s"'
 
+let g:ale_tex_chktex_options = '-I -n 18'
+
+" Snippet engine + actual snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-n>"
+
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
 " Pair braces
@@ -52,6 +60,8 @@ Plugin 'vim-airline/vim-airline-themes'
 " LaTeX support
 Plugin 'vim-latex/vim-latex'
 let g:tex_flavor='latex'
+let g:Tex_DefaultTargetFormat='dvi'
+let g:Tex_ViewRule_dvi='xdvi'
 
 " ToDo List
 Plugin 'aserebryakov/vim-todo-lists'
@@ -282,12 +292,13 @@ vnoremap y y`]
 " Open definition in new tab
 " noremap <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-noremap <leader>l :TlistToggle<cr><C-w>10h
+" map <F> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+noremap          <leader>l :TlistToggle<cr><C-w>10h
+
 call togglebg#map("")
 noremap <silent> <leader>c :ToggleBG<cr>
 	\ :execute 'call Refresh_custom_hi()'<cr>
-
-" map <F> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " Remove trailing whitespace, dont highlight while searching and restore
 " search-register and cursor position afterwards.
