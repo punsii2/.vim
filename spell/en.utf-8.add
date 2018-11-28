@@ -1,4 +1,3 @@
-livetests
 hpfcomm
 rekeying
 livetest
@@ -17,4 +16,17 @@ rekey
 usks
 x86
 wifi
+vronix
+ramdisk
+rscd
+l4
+foo
+xgettext
+msgmerge
+gettext
+diff
+livetests
+l4re
+l4build
+diffs
 vronix
