@@ -60,16 +60,16 @@ Plugin 'vim-airline/vim-airline-themes'
 " LaTeX support
 Plugin 'vim-latex/vim-latex'
 let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat='dvi'
+let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_CompileRule_dvi='latex 
                                \ -output-directory=../obj
                                \ $*'
 let g:Tex_ViewRuleComplete_dvi='xdvi ../obj/$* &'
-" let g:Tex_CompileRole_pdf='pdflatex
-"                                \ -src-specials
-"                                \ -output-directory=../obj
-"                                \ $*'
-" let g:Tex_ViewRuleComplete_pdf='xpdf ../obj/$* &'
+let g:Tex_CompileRule_pdf='pdflatex
+                               \ -src-specials
+                               \ -output-directory ../obj
+                               \ $*'
+let g:Tex_ViewRuleComplete_pdf='xdg-open ../obj/$*.pdf &'
 
 " ToDo List
 Plugin 'aserebryakov/vim-todo-lists'
