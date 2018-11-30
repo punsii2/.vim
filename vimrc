@@ -255,6 +255,8 @@ function! Custom_hi()
 	match OverLength /\%>80v.\+/
 	hi TrailingWhitespace ctermbg=red guibg=red
 	match TrailingWhitespace /\s\+$/
+	hi clear SpellBad
+	hi SpellBad cterm=underline
 endfunction
 
 function! Refresh_custom_hi()
