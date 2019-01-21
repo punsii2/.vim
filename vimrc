@@ -33,7 +33,7 @@ Plugin 'w0rp/ale'
 let g:ale_echo_msg_format = '%linter%: "%s"'
 let g:ale_loclist_msg_format = '%linter%: "%s"'
 
-let g:ale_tex_chktex_options = '-I -n 18'
+let g:ale_tex_chktex_options = '-I -n 18 -n 44'
 
 " Snippet engine + actual snippets
 Plugin 'SirVer/ultisnips'
@@ -58,18 +58,29 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 " LaTeX support
-Plugin 'vim-latex/vim-latex'
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_CompileRule_dvi='latex 
-                               \ -output-directory=../obj
-                               \ $*'
-let g:Tex_ViewRuleComplete_dvi='xdvi ../obj/$* &'
-let g:Tex_CompileRule_pdf='pdflatex
-                               \ -src-specials
-                               \ -output-directory ../obj
-                               \ $*'
-let g:Tex_ViewRuleComplete_pdf='xdg-open ../obj/$*.pdf &'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'matze/vim-tex-fold'
+let g:LatexBox_latexmk_preview_continuously=1
+let g:LatexBox_quickfix=2
+let g:LatexBox_latexmk_options='-output-directory=../obj'
+let g:LatexBox_build_dir='../obj'
+
+"Plugin 'vim-latex/vim-latex'
+"let g:tex_flavor='latex'
+"let g:Tex_DefaultTargetFormat='pdf'
+"let g:Tex_CompileRule_dvi='latex
+"                               \ -output-directory=../obj
+"                               \ $*'
+"let g:Tex_ViewRuleComplete_dvi='xdvi ../obj/$* &'
+"let g:Tex_CompileRule_pdf='latexmk
+"                               \ -pdf
+"                               \ -output-directory=../obj/
+"                               \ $*'
+"" let g:Tex_CompileRule_pdf='pdflatex
+""                                \ -src-specials
+""                                \ -output-directory ../obj
+""                                \ $*'
+"let g:Tex_ViewRuleComplete_pdf='xdg-open ../obj/$*.pdf &'
 
 " ToDo List
 Plugin 'aserebryakov/vim-todo-lists'
@@ -113,6 +124,7 @@ call vundle#end()
 " +-----------------------------------------------------------------------+
 " change <Leader> key
 let mapleader=","
+let localleader=","
 
 " Vim.
 set nocompatible
