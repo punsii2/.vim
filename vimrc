@@ -35,6 +35,13 @@ let g:ale_loclist_msg_format = '%linter%: "%s"'
 
 let g:ale_tex_chktex_options = '-I -n 18 -n 44'
 
+let g:ale_fixers = {
+\	'go': [
+\		'gofmt',
+\		'golint',
+\	],
+\}
+
 " Snippet engine + actual snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
