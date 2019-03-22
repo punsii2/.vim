@@ -38,7 +38,7 @@ let g:ale_tex_chktex_options = '-I -n 18 -n 44'
 let g:ale_fixers = {
 \	'go': [
 \		'gofmt',
-\		'golint',
+\		'goimports',
 \	],
 \}
 
