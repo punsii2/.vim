@@ -42,11 +42,12 @@ let g:ale_fixers = {
 \	],
 \}
 
+" Semantic Compleation
+Plugin 'Valloric/YouCompleteMe'
+
 " Snippet engine + actual snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-n>"
 
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
@@ -129,10 +130,6 @@ call vundle#end()
 " +-----------------------------------------------------------------------+
 " |  General                                                              |
 " +-----------------------------------------------------------------------+
-" change <Leader> key
-let mapleader=","
-let localleader=","
-
 " Vim.
 set nocompatible
 
@@ -153,7 +150,7 @@ set mouse=a
 
 " Enable autocompletion line in commandline and behaviour
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=longest:full,longest
 
 " Show current mode (INSERT/REPLACE/...)
 set showmode
@@ -303,6 +300,17 @@ set number
 " +-----------------------------------------------------------------------+
 " |  Mappings                                                             |
 " +-----------------------------------------------------------------------+
+
+" change <Leader> key
+let mapleader=","
+let localleader=","
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<c-b>"
+let g:UltiSnipsListSnippets="<c-n>"
+
+"YouCompleteMe
+imap <Tab> <C-P>
 
 " Split navigations
 nnoremap <C-J> <C-W><C-J>
