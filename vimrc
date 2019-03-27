@@ -150,7 +150,7 @@ set mouse=a
 
 " Enable autocompletion line in commandline and behaviour
 set wildmenu
-set wildmode=longest:full,longest
+set wildmode=longest:full,full
 
 " Show current mode (INSERT/REPLACE/...)
 set showmode
