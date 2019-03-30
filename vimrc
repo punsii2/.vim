@@ -34,6 +34,7 @@ let g:ale_echo_msg_format = '%linter%: "%s"'
 let g:ale_loclist_msg_format = '%linter%: "%s"'
 
 let g:ale_tex_chktex_options = '-I -n 18 -n 44'
+let g:ale_go_golangci_lint_package = 1
 
 let g:ale_fixers = {
 \	'go': [
@@ -41,6 +42,14 @@ let g:ale_fixers = {
 \		'goimports',
 \	],
 \}
+
+let g:ale_linters = {
+\	'go': [
+\		'gofmt',
+\		'golint',
+\		'go vet',
+\		'golangci-lint',
+\]}
 
 " Semantic Compleation
 Plugin 'Valloric/YouCompleteMe'
@@ -332,8 +341,11 @@ vnoremap y y`]
 " ctags shortcut might be usefull
 " map <F> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
+" Use ALEfix to format current file
+noremap <leader>f :ALEFix<cr>
+
 " Toggle TagList-window
-noremap          <leader>l :TlistToggle<cr><C-w>10h
+noremap <leader>l :TlistToggle<cr><C-w>10h
 
 " Format Paragraph
 noremap <silent> <leader>f :let _pos = getcurpos() <Bar><CR>
