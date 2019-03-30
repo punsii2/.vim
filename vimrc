@@ -347,12 +347,6 @@ noremap <leader>f :ALEFix<cr>
 " Toggle TagList-window
 noremap <leader>l :TlistToggle<cr><C-w>10h
 
-" Format Paragraph
-noremap <silent> <leader>f :let _pos = getcurpos() <Bar><CR>
-	\ {gq}<CR>
-	\ :call setpos('.', _pos) <Bar>
-	\ :unlet _pos <CR>
-
 " Toggle light/dark theme
 call togglebg#map("")
 noremap <silent> <leader>c :ToggleBG<cr>
