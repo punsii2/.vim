@@ -41,6 +41,12 @@ let g:ale_fixers = {
 \		'gofmt',
 \		'goimports',
 \	],
+\	'xml': [
+\		'xmllint',
+\	],
+\	'html': [
+\		'prettier',
+\	],
 \}
 
 let g:ale_linters = {
