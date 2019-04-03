@@ -35,11 +35,16 @@ let g:ale_loclist_msg_format = '%linter%: "%s"'
 
 let g:ale_tex_chktex_options = '-I -n 18 -n 44'
 let g:ale_go_golangci_lint_package = 1
+let g:ale_java_google_java_format_executable = 'java'
+let g:ale_java_google_java_format_options = '-jar /usr/local/bin/google-java-format-1.7-all-deps.jar -i'
 
 let g:ale_fixers = {
 \	'go': [
 \		'gofmt',
 \		'goimports',
+\	],
+\	'java': [
+\		'google_java_format',
 \	],
 \	'xml': [
 \		'xmllint',
