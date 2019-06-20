@@ -54,6 +54,8 @@ let g:ale_fixers = {
 \	],
 \}
 
+let g:ale_go_gofmt_options = '-s'
+
 let g:ale_linters = {
 \	'go': [
 \		'gofmt',
