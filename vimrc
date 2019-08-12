@@ -329,7 +329,7 @@ let localleader=","
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-b>"
-let g:UltiSnipsListSnippets="<c-n>"
+let g:UltiSnipsListSnippets="<c-l>"
 
 "YouCompleteMe
 imap <Tab> <C-P>
