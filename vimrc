@@ -1,6 +1,7 @@
-" +-----------------------------------------------------------------------+
-" |  Vundle                                                               |
-" +-----------------------------------------------------------------------+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                    Vundle                                    "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 " Setting up Vundle - the vim plugin bundler
 let vundleIsSetup=1
@@ -25,11 +26,17 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" Let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Installed Plugins                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin 'ninjin/vim-openbsd' " Use Openbsd codestyle
 
-" Asynchronous Lint Engine (ALE)
-Plugin 'w0rp/ale'
+Plugin 'VundleVim/Vundle.vim' " Let Vundle manage Vundle, required
+
+if v:version >= 800
+	Plug 'w0rp/ale' " Asyncronous Lint Engine (ALE)
+endif
+
 let g:ale_echo_msg_format = '%linter%: "%s"'
 let g:ale_loclist_msg_format = '%linter%: "%s"'
 
@@ -64,32 +71,31 @@ let g:ale_linters = {
 \		'golangci-lint',
 \]}
 
-" Semantic Compleation
-Plugin 'Valloric/YouCompleteMe'
+if v:version >= 704 && (has('python') || has('python3'))
+	Plugin 'SirVer/ultisnips' " Snippet engine
+	Plugin 'honza/vim-snippets' " Actual snippets
+endif
 
-" Snippet engine + actual snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe' " Semantic Completion
 
-" Git wrapper
-Plugin 'tpope/vim-fugitive'
-" Pair braces
-Plugin 'tpope/vim-surround'
-" Repeat plugin mappings
-Plugin 'tpope/vim-repeat'
+Plugin 'chrissicool/cscope_maps' " Cscope from cludwig@
+set tags=./tags;			" search tags files upwards
+set csto=1				" prefer tags DBs over cscope DBs
+Plugin 'taglist.vim' " Tags on sidebar
+let Tlist_WinWidth = 50
+let Tlist_Close_On_Select=1
 
-" Use Openbsd codestyle
-" Plugin 'ninjin/vim-openbsd'
+Plugin 'tpope/vim-fugitive' " Git wrapper
+Plugin 'tpope/vim-surround' " Pair braces
+Plugin 'tpope/vim-repeat' " Repeat plugin mappings
 
-" Colorscheme
-Plugin 'altercation/vim-colors-solarized'
-" Neat Status Line
-Plugin 'vim-airline/vim-airline'
+Plugin 'altercation/vim-colors-solarized' " Colorscheme
+
+Plugin 'vim-airline/vim-airline' " Neat Status Line
 Plugin 'vim-airline/vim-airline-themes'
 
-" LaTeX support
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'matze/vim-tex-fold'
+Plugin 'LaTeX-Box-Team/LaTeX-Box' " LaTeX support
+Plugin 'matze/vim-tex-fold' " Correct Folding like vim-latex
 let g:LatexBox_latexmk_preview_continuously=1
 let g:LatexBox_quickfix=2
 let g:LatexBox_latexmk_options='-output-directory=../obj'
@@ -112,20 +118,7 @@ let g:LatexBox_build_dir='../obj'
 ""                                \ $*'
 "let g:Tex_ViewRuleComplete_pdf='xdg-open ../obj/$*.pdf &'
 
-" ToDo List
-Plugin 'aserebryakov/vim-todo-lists'
-
-" Tags
-Plugin 'taglist.vim'
-
-" Cscope from cludwig@
-Plugin 'chrissicool/cscope_maps'
-
-
-set tags=./tags;			" search tags files upwards
-set csto=1				" prefer tags DBs over cscope DBs
-let Tlist_WinWidth = 50
-let Tlist_Close_On_Select=1
+Plugin 'aserebryakov/vim-todo-lists' " ToDo List
 
 " Install plugins after fresh start
 if vundleIsSetup == 0
@@ -149,9 +142,11 @@ call vundle#end()
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-" +-----------------------------------------------------------------------+
-" |  General                                                              |
-" +-----------------------------------------------------------------------+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               General settings                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
 " Vim.
 set nocompatible
 
@@ -273,7 +268,7 @@ let perl_want_scope_in_variables = 1
 syntax enable
 set background=light
 " set if terminal colors are not set
-" let g:solarized_termcolors=256
+let g:solarized_termcolors=256
 colorscheme solarized
 let g:airline_theme='solarized'
 
