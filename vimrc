@@ -34,7 +34,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim' " Let Vundle manage Vundle, required
 
 if v:version >= 800
-	Plug 'w0rp/ale' " Asyncronous Lint Engine (ALE)
+	Plugin 'ludovicchabant/vim-gutentags' " Regenerate Tag Files
+	Plugin 'w0rp/ale' " Asyncronous Lint Engine (ALE)
 endif
 
 let g:ale_echo_msg_format = '%linter%: "%s"'
@@ -81,6 +82,7 @@ Plugin 'Valloric/YouCompleteMe' " Semantic Completion
 Plugin 'chrissicool/cscope_maps' " Cscope from cludwig@
 set tags=./tags;			" search tags files upwards
 set csto=1				" prefer tags DBs over cscope DBs
+
 Plugin 'taglist.vim' " Tags on sidebar
 let Tlist_WinWidth = 50
 let Tlist_Close_On_Select=1
@@ -94,15 +96,36 @@ Plugin 'altercation/vim-colors-solarized' " Colorscheme
 Plugin 'vim-airline/vim-airline' " Neat Status Line
 Plugin 'vim-airline/vim-airline-themes'
 
-Plugin 'LaTeX-Box-Team/LaTeX-Box' " LaTeX support
-Plugin 'matze/vim-tex-fold' " Correct Folding like vim-latex
-let g:LatexBox_latexmk_preview_continuously=1
-let g:LatexBox_quickfix=2
-let g:LatexBox_latexmk_options='-output-directory=../obj'
-let g:LatexBox_build_dir='../obj'
+Plugin 'lervag/vimtex' " 'Modern' LaTeX support
+" let g:tex_flavor='latex'
+let g:vimtex_view_method="zathura"
+let g:vimtex_compiler_latexmk = {
+	\ 'background' : 1,
+	\ 'build_dir' : '../obj',
+	\ 'callback' : 1,
+	\ 'continuous' : 1,
+	\ 'executable' : 'latexmk',
+	\ 'hooks' : [],
+	\ 'options' : [
+	\   '-verbose',
+	\   '-file-line-error',
+	\   '-synctex=1',
+	\   '-interaction=nonstopmode',
+	\ ],
+	\}
+
+
+" Plugin 'LaTeX-Box-Team/LaTeX-Box' " LaTeX support
+" Plugin 'matze/vim-tex-fold' " Correct Folding like vim-latex
+" let g:LatexBox_viewer="zathura"
+" let g:LatexBox_latexmk_preview_continuously=1
+" let g:LatexBox_quickfix=2
+" let g:LatexBox_latexmk_options='-output-directory=../obj'
+" let g:LatexBox_build_dir='../obj'
+
+
 
 "Plugin 'vim-latex/vim-latex'
-"let g:tex_flavor='latex'
 "let g:Tex_DefaultTargetFormat='pdf'
 "let g:Tex_CompileRule_dvi='latex
 "                               \ -output-directory=../obj
@@ -143,7 +166,7 @@ call vundle#end()
 " Put your non-Plugin stuff after this line
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               General settings                               "
+"                              General settings                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -205,10 +228,6 @@ set softtabstop=8
 " cindent (i have no idea what these lines actually mean)
 set cindent
 set cinoptions=:0,l1,t0,g0,0 fo=tcqlron
-
-" +-----------------------------------------------------------------------+
-" |  Misc                                                                 |
-" +-----------------------------------------------------------------------+
 
 " Highlight search
 set hlsearch
@@ -314,9 +333,10 @@ set number
 " highlight ExtraWhitespace ctermbg=red guibg=red
 " match ExtraWhitespace /\v\s+$| +\ze\t|\S\zs\t+ +|^\s*( {8})+/
 
-" +-----------------------------------------------------------------------+
-" |  Mappings                                                             |
-" +-----------------------------------------------------------------------+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                   Mappings                                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 " change <Leader> key
 let mapleader=","
