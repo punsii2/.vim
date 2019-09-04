@@ -340,7 +340,7 @@ set number
 
 " change <Leader> key
 let mapleader=","
-let localleader=","
+let maplocalleader=","
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-b>"
