@@ -98,20 +98,10 @@ Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'lervag/vimtex' " 'Modern' LaTeX support
 " let g:tex_flavor='latex'
+let g:vimtex_fold_enabled=1
 let g:vimtex_view_method="zathura"
-let g:vimtex_compiler_latexmk = {
-	\ 'background' : 1,
+let g:vimtex_compiler_latexmk={
 	\ 'build_dir' : '../obj',
-	\ 'callback' : 1,
-	\ 'continuous' : 1,
-	\ 'executable' : 'latexmk',
-	\ 'hooks' : [],
-	\ 'options' : [
-	\   '-verbose',
-	\   '-file-line-error',
-	\   '-synctex=1',
-	\   '-interaction=nonstopmode',
-	\ ],
 	\}
 
 
