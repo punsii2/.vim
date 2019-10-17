@@ -34,10 +34,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim' " Let Vundle manage Vundle, required
 
 if v:version >= 800
-	Plugin 'ludovicchabant/vim-gutentags' " Regenerate Tag Files
-	Plugin 'w0rp/ale' " Asyncronous Lint Engine (ALE)
+	Plugin 'w0rp/ale' " Asyncronous Lint Engine (ALE) (+LSP)
 endif
 
+let g:ale_set_balloons = 1
 let g:ale_echo_msg_format = '%linter%: "%s"'
 let g:ale_loclist_msg_format = '%linter%: "%s"'
 
@@ -62,15 +62,25 @@ let g:ale_fixers = {
 \	],
 \}
 
-let g:ale_go_gofmt_options = '-s'
-
 let g:ale_linters = {
+\	'cpp': [
+\		'ccls',
+\	],
+\	'c': [
+\		'ccls',
+\	],
 \	'go': [
 \		'gofmt',
 \		'golint',
 \		'go vet',
 \		'golangci-lint',
-\]}
+\	],
+\	'python': [
+\		'pyls',
+\	],
+\}
+
+let g:ale_go_gofmt_options = '-s'
 
 if v:version >= 704 && (has('python') || has('python3'))
 	Plugin 'SirVer/ultisnips' " Snippet engine
@@ -78,6 +88,8 @@ if v:version >= 704 && (has('python') || has('python3'))
 endif
 
 Plugin 'Valloric/YouCompleteMe' " Semantic Completion
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 Plugin 'chrissicool/cscope_maps' " Cscope from cludwig@
 set tags=./tags;			" search tags files upwards
@@ -102,7 +114,7 @@ let g:vimtex_fold_enabled=1
 let g:vimtex_view_method="zathura"
 let g:vimtex_compiler_latexmk={
 	\ 'build_dir' : '../obj',
-	\}
+\}
 
 
 " Plugin 'LaTeX-Box-Team/LaTeX-Box' " LaTeX support
@@ -361,6 +373,9 @@ vnoremap y y`]
 
 " Use ALEfix to format current file
 noremap <leader>f :ALEFix<cr>
+
+" Use ALEGoToDefinition
+noremap gd :ALEGoToDefinition<cr>
 
 " Toggle TagList-window
 noremap <leader>l :TlistToggle<cr><C-w>10h
