@@ -1,7 +1,11 @@
+" Ensure python3 is loaded before python2,
+" since vim can not use both at the same time
+if has('python3')
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                    Vundle                                    "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 " Setting up Vundle - the vim plugin bundler
 let vundleIsSetup=1
