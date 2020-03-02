@@ -91,9 +91,11 @@ if v:version >= 704 && (has('python') || has('python3'))
 	Plugin 'honza/vim-snippets' " Actual snippets
 endif
 
-Plugin 'Valloric/YouCompleteMe' " Semantic Completion
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
+if has('python') || has('python3')
+	Plugin 'Valloric/YouCompleteMe' " Semantic Completion
+	let g:ycm_autoclose_preview_window_after_completion = 1
+	let g:ycm_autoclose_preview_window_after_insertion = 1
+endif
 
 Plugin 'chrissicool/cscope_maps' " Cscope from cludwig@
 set tags=./tags;			" search tags files upwards
