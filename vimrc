@@ -64,6 +64,9 @@ let g:ale_fixers = {
 \	'html': [
 \		'prettier',
 \	],
+\	'perl': [
+\		'perltidy',
+\	],
 \}
 
 let g:ale_linters = {
