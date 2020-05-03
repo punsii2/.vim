@@ -1,3 +1,7 @@
+" force using python3 if availiable
+if has('python3')
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                    Vundle                                    "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -97,9 +101,14 @@ Plugin 'vim-airline/vim-airline' " Neat Status Line
 Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'lervag/vimtex' " 'Modern' LaTeX support
-" let g:tex_flavor='latex'
+let g:tex_flavor='latex'
 let g:vimtex_fold_enabled=1
-let g:vimtex_view_method="zathura"
+if executable('zathura')
+	let g:vimtex_view_method="zathura"
+else
+	let g:vimtex_view_method="general"
+	let g:vimtex_view_general_viewer = 'evince'
+endif
 let g:vimtex_compiler_latexmk={
 	\ 'build_dir' : '../obj',
 	\}
