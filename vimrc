@@ -1,11 +1,11 @@
-" force using python3 if availiable
+" Ensure python3 is loaded before python2,
+" since vim can not use both at the same time
 if has('python3')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                    Vundle                                    "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 " Setting up Vundle - the vim plugin bundler
 let vundleIsSetup=1
@@ -38,10 +38,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim' " Let Vundle manage Vundle, required
 
 if v:version >= 800
-	Plugin 'ludovicchabant/vim-gutentags' " Regenerate Tag Files
-	Plugin 'w0rp/ale' " Asyncronous Lint Engine (ALE)
+	Plugin 'w0rp/ale' " Asyncronous Lint Engine (ALE) (+LSP)
 endif
 
+let g:ale_set_balloons = 1
 let g:ale_echo_msg_format = '%linter%: "%s"'
 let g:ale_loclist_msg_format = '%linter%: "%s"'
 
@@ -64,24 +64,41 @@ let g:ale_fixers = {
 \	'html': [
 \		'prettier',
 \	],
+\	'perl': [
+\		'perltidy',
+\	],
 \}
 
-let g:ale_go_gofmt_options = '-s'
-
 let g:ale_linters = {
+\	'cpp': [
+\		'ccls',
+\	],
+\	'c': [
+\		'ccls',
+\	],
 \	'go': [
 \		'gofmt',
 \		'golint',
 \		'go vet',
 \		'golangci-lint',
-\]}
+\	],
+\	'python': [
+\		'pyls',
+\	],
+\}
+
+let g:ale_go_gofmt_options = '-s'
 
 if v:version >= 704 && (has('python') || has('python3'))
 	Plugin 'SirVer/ultisnips' " Snippet engine
 	Plugin 'honza/vim-snippets' " Actual snippets
 endif
 
-Plugin 'Valloric/YouCompleteMe' " Semantic Completion
+if has('python') || has('python3')
+	Plugin 'Valloric/YouCompleteMe' " Semantic Completion
+	let g:ycm_autoclose_preview_window_after_completion = 1
+	let g:ycm_autoclose_preview_window_after_insertion = 1
+endif
 
 Plugin 'chrissicool/cscope_maps' " Cscope from cludwig@
 set tags=./tags;			" search tags files upwards
@@ -111,7 +128,7 @@ else
 endif
 let g:vimtex_compiler_latexmk={
 	\ 'build_dir' : '../obj',
-	\}
+\}
 
 
 " Plugin 'LaTeX-Box-Team/LaTeX-Box' " LaTeX support
@@ -217,9 +234,10 @@ set clipboard=unnamedplus
 set splitright
 
 " Tab settings
-set noexpandtab
 " Size of real Tabs
 set tabstop=8
+
+set noexpandtab
 " Indent amount when using cindent, >>, ..
 set shiftwidth=8
 " Indent amount when using TAB
@@ -227,6 +245,11 @@ set softtabstop=8
 " cindent (i have no idea what these lines actually mean)
 set cindent
 set cinoptions=:0,l1,t0,g0,0 fo=tcqlron
+
+"sgd-version
+set expandtab
+set shiftwidth=4
+set softtabstop=4
 
 " Highlight search
 set hlsearch
@@ -370,6 +393,9 @@ vnoremap y y`]
 
 " Use ALEfix to format current file
 noremap <leader>f :ALEFix<cr>
+
+" Use ALEGoToDefinition
+noremap gd :ALEGoToDefinition<cr>
 
 " Toggle TagList-window
 noremap <leader>l :TlistToggle<cr><C-w>10h
