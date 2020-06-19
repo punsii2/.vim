@@ -247,7 +247,6 @@ set cindent
 set cinoptions=:0,l1,t0,g0,0 fo=tcqlron
 
 "sgd-version
-set expandtab
 set shiftwidth=4
 set softtabstop=4
 
