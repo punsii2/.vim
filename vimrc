@@ -110,6 +110,7 @@ let Tlist_Close_On_Select=1
 
 Plugin 'tpope/vim-fugitive' " Git wrapper
 Plugin 'tpope/vim-surround' " Pair braces
+Plugin 'tpope/vim-unimpaired' " Add some usefull mappings with '[' and ']'
 Plugin 'tpope/vim-repeat' " Repeat plugin mappings
 
 Plugin 'altercation/vim-colors-solarized' " Colorscheme
