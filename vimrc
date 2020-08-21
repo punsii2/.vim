@@ -94,8 +94,8 @@ if v:version >= 704 && (has('python') || has('python3'))
 	Plugin 'honza/vim-snippets' " Actual snippets
 endif
 
-if has('python') || has('python3')
-	Plugin 'Valloric/YouCompleteMe' " Semantic Completion
+if (has('python') || has('python3')) && !filereadable(expand("~/.dotfiles/.genuaTweaks"))
+	Plugin 'ycm-core/YouCompleteMe' " Semantic Completion
 	let g:ycm_autoclose_preview_window_after_completion = 1
 	let g:ycm_autoclose_preview_window_after_insertion = 1
 endif
