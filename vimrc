@@ -308,9 +308,10 @@ let perl_want_scope_in_variables = 1
 " Solarized Plugin
 syntax enable
 set background=light
-" set if terminal colors are not set
-let g:solarized_termcolors=256
 colorscheme solarized
+" set if terminal colors are not set
+"let g:solarized_termcolors=256
+let g:airline_solarized_bg='light'
 let g:airline_theme='solarized'
 
 function! Airline_solar_adjust()
@@ -318,6 +319,14 @@ function! Airline_solar_adjust()
 		let g:airline_solarized_bg='light'
 	else
 		let g:airline_solarized_bg='dark'
+	endif
+	if exists(':AirlineRefresh')
+	    " Only use AirlineRefresh if loaded already
+	    AirlineRefresh
+	else
+	    " Clear & redraw the screen, then redraw all statuslines.
+	    redraw!
+	    redrawstatus!
 	endif
 endfunction
 
@@ -335,11 +344,16 @@ endfunction
 
 function! Refresh_custom_hi()
 	call Airline_solar_adjust()
-	AirlineRefresh
 	call Custom_hi()
 endfunction
 
-call Custom_hi()
+" Call this because ToggleBG is not loaded otherwise
+" (see https://github.com/altercation/vim-colors-solarized/issues/40)
+call togglebg#map("")
+" Call ToggleBG because the theme always starts dark for some reason
+execute 'ToggleBG'
+" Also refresh custom hi after the toggle
+call Refresh_custom_hi()
 
 " Show matches (braces, quotes etc.) briefly
 set showmatch
@@ -401,7 +415,6 @@ noremap gd :ALEGoToDefinition<cr>
 noremap <leader>l :TlistToggle<cr><C-w>10h
 
 " Toggle light/dark theme
-call togglebg#map("")
 noremap <silent> <leader>c :ToggleBG<cr>
 	\ :execute 'call Refresh_custom_hi()'<cr>
 
