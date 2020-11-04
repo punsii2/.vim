@@ -275,7 +275,6 @@ function! Airline_solar_adjust()
 	if exists(':AirlineRefresh')
 	    " Only use AirlineRefresh if loaded already
 	    AirlineRefresh
-	else
 	    " Clear & redraw the screen, then redraw all statuslines.
 	    redraw!
 	    redrawstatus!
@@ -302,8 +301,6 @@ endfunction
 " Call this because ToggleBG is not loaded otherwise
 " (see https://github.com/altercation/vim-colors-solarized/issues/40)
 call togglebg#map("")
-" Call ToggleBG because the theme always starts dark for some reason
-execute 'ToggleBG'
 " Also refresh custom hi after the toggle
 call Refresh_custom_hi()
 
