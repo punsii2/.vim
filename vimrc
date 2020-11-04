@@ -351,9 +351,6 @@ vnoremap y y`]
 " Courser at last position
 " vmap y ygv<Esc>
 
-" Open definition in new tab
-" noremap <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-
 " Use ALEfix to format current file
 noremap <leader>f :ALEFix<cr>
 
