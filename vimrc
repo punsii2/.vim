@@ -118,46 +118,6 @@ Plugin 'altercation/vim-colors-solarized' " Colorscheme
 Plugin 'vim-airline/vim-airline' " Neat Status Line
 Plugin 'vim-airline/vim-airline-themes'
 
-Plugin 'lervag/vimtex' " 'Modern' LaTeX support
-let g:tex_flavor='latex'
-let g:vimtex_fold_enabled=1
-if executable('zathura')
-	let g:vimtex_view_method="zathura"
-else
-	let g:vimtex_view_method="general"
-	let g:vimtex_view_general_viewer = 'evince'
-endif
-let g:vimtex_compiler_latexmk={
-	\ 'build_dir' : '../obj',
-\}
-
-
-" Plugin 'LaTeX-Box-Team/LaTeX-Box' " LaTeX support
-" Plugin 'matze/vim-tex-fold' " Correct Folding like vim-latex
-" let g:LatexBox_viewer="zathura"
-" let g:LatexBox_latexmk_preview_continuously=1
-" let g:LatexBox_quickfix=2
-" let g:LatexBox_latexmk_options='-output-directory=../obj'
-" let g:LatexBox_build_dir='../obj'
-
-
-
-"Plugin 'vim-latex/vim-latex'
-"let g:Tex_DefaultTargetFormat='pdf'
-"let g:Tex_CompileRule_dvi='latex
-"                               \ -output-directory=../obj
-"                               \ $*'
-"let g:Tex_ViewRuleComplete_dvi='xdvi ../obj/$* &'
-"let g:Tex_CompileRule_pdf='latexmk
-"                               \ -pdf
-"                               \ -output-directory=../obj/
-"                               \ $*'
-"" let g:Tex_CompileRule_pdf='pdflatex
-""                                \ -src-specials
-""                                \ -output-directory ../obj
-""                                \ $*'
-"let g:Tex_ViewRuleComplete_pdf='xdg-open ../obj/$*.pdf &'
-
 Plugin 'aserebryakov/vim-todo-lists' " ToDo List
 
 " Install plugins after fresh start
