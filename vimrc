@@ -100,10 +100,6 @@ if (has('python') || has('python3')) && !filereadable(expand("~/.dotfiles/.genua
 	let g:ycm_autoclose_preview_window_after_insertion = 1
 endif
 
-Plugin 'taglist.vim' " Tags on sidebar
-let Tlist_WinWidth = 50
-let Tlist_Close_On_Select=1
-
 Plugin 'tpope/vim-fugitive' " Git wrapper
 Plugin 'tpope/vim-surround' " Pair braces
 Plugin 'tpope/vim-unimpaired' " Add some usefull mappings with '[' and ']'
