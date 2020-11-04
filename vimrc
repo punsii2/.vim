@@ -100,10 +100,6 @@ if (has('python') || has('python3')) && !filereadable(expand("~/.dotfiles/.genua
 	let g:ycm_autoclose_preview_window_after_insertion = 1
 endif
 
-Plugin 'chrissicool/cscope_maps' " Cscope from cludwig@
-set tags=./tags;			" search tags files upwards
-set csto=1				" prefer tags DBs over cscope DBs
-
 Plugin 'taglist.vim' " Tags on sidebar
 let Tlist_WinWidth = 50
 let Tlist_Close_On_Select=1
@@ -361,9 +357,6 @@ vnoremap y y`]
 
 " Open definition in new tab
 " noremap <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-
-" ctags shortcut might be usefull
-" map <F> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " Use ALEfix to format current file
 noremap <leader>f :ALEFix<cr>
