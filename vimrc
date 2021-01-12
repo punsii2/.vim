@@ -376,3 +376,8 @@ noremap <silent> <leader>w :let _pos = getcurpos() <Bar>
 	\ :unlet _s <Bar>
 	\ :call setpos('.', _pos) <Bar>
 	\ :unlet _pos <CR>
+
+autocmd FileType sls setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType javascriptreact setlocal ts=2 sts=2 sw=2 expandtab
