@@ -35,3 +35,8 @@ gui
 admin
 tcp
 pid
+in
+#evault
+keyvault
+keyvaults
+apiVersions
