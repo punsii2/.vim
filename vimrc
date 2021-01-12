@@ -55,17 +55,20 @@ let g:ale_fixers = {
 \		'gofmt',
 \		'goimports',
 \	],
-\	'java': [
-\		'google_java_format',
-\	],
-\	'xml': [
-\		'xmllint',
-\	],
 \	'html': [
 \		'prettier',
 \	],
+\	'java': [
+\		'google_java_format',
+\	],
+\	'javascript': [
+\		'eslint',
+\	],
 \	'perl': [
 \		'perltidy',
+\	],
+\	'xml': [
+\		'xmllint',
 \	],
 \}
 
@@ -99,6 +102,8 @@ if (has('python') || has('python3')) && !filereadable(expand("~/.dotfiles/.genua
 	let g:ycm_autoclose_preview_window_after_completion = 1
 	let g:ycm_autoclose_preview_window_after_insertion = 1
 endif
+
+Plugin 'pangloss/vim-javascript' " Git wrapper
 
 Plugin 'tpope/vim-fugitive' " Git wrapper
 Plugin 'tpope/vim-surround' " Pair braces
