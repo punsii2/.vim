@@ -49,6 +49,8 @@ let g:ale_tex_chktex_options = '-I -n 18 -n 44'
 let g:ale_go_golangci_lint_package = 1
 let g:ale_java_google_java_format_executable = 'java'
 let g:ale_java_google_java_format_options = '-jar /usr/local/bin/google-java-format-1.7-all-deps.jar -i'
+let g:ale_python_pylint_executable = 'pylint3'
+let g:ale_python_yapf_executable = 'yapf3'
 
 let g:ale_fixers = {
 \	'go': [
@@ -66,6 +68,10 @@ let g:ale_fixers = {
 \	],
 \	'perl': [
 \		'perltidy',
+\	],
+\	'python': [
+\		'yapf',
+\		'trim_whitespace',
 \	],
 \	'xml': [
 \		'xmllint',
@@ -87,6 +93,8 @@ let g:ale_linters = {
 \	],
 \	'python': [
 \		'pyls',
+\		'pylint',
+\		'flake8',
 \	],
 \}
 
