@@ -272,11 +272,11 @@ let perl_want_scope_in_variables = 1
 
 " Solarized Plugin
 syntax enable
-set background=light
+set background=dark
 colorscheme solarized
 " set if terminal colors are not set
 "let g:solarized_termcolors=256
-let g:airline_solarized_bg='light'
+let g:airline_solarized_bg='dark'
 let g:airline_theme='solarized'
 
 function! Airline_solar_adjust()

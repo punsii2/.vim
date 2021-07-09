@@ -51,3 +51,4 @@ api
 inodes
 systemd
 buildbot
+systemctl
