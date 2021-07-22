@@ -1,0 +1,6 @@
+{
+    "diagnostic.displayByAle": true,
+    "pydocstring.formatter": "google",
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "/usr/bin/black"
+}
