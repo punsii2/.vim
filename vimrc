@@ -4,41 +4,28 @@ if has('python3')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                    Vundle                                    "
+"                                    vim-plug                                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Setting up Vundle - the vim plugin bundler
-let vundleIsSetup=1
-let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
+"" Setting up Vundle - the vim plugin bundler
+"let vundleIsSetup=1
+"let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
 
-" Clone Vundle manually if not present
-if !filereadable(vundle_readme)
-	echo "Installing Vundle.."
-	echo ""
-	silent !mkdir -p ~/.vim/bundle
-	silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-	let vundleIsSetup=0
-endif
+"" Clone Vundle manually if not present
+"if !filereadable(vundle_readme)
+"	echo "Installing Vundle.."
+"	echo ""
+"	silent !mkdir -p ~/.vim/bundle
+"	silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"	let vundleIsSetup=0
+"endif
 
-" Vim.
-set nocompatible
-
-" Must be off before Vundle runs
-filetype off
-
-" Set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
+call plug#begin('~/.vim/plugged')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              Installed Plugins                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin 'ninjin/vim-openbsd' " Use Openbsd codestyle
-
-Plugin 'VundleVim/Vundle.vim' " Let Vundle manage Vundle, required
-
 if v:version >= 800
-	Plugin 'w0rp/ale' " Asyncronous Lint Engine
+	Plug 'w0rp/ale' " Asyncronous Lint Engine
 endif
 
 let g:ale_disable_lsp = 1 "use coc for lsp
@@ -100,7 +87,9 @@ let g:ale_linters = {
 
 let g:ale_go_gofmt_options = '-s'
 
-	Plugin 'neoclide/coc.nvim' " LSP Client
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"coc.nvim works best on vim >= 8.1.1719
+let g:coc_disable_startup_warning = 1
 
 	"coc.nvim works best on vim >= 8.1.1719
 	let g:coc_disable_startup_warning = 1
@@ -117,39 +106,30 @@ let g:ale_go_gofmt_options = '-s'
 	"    \ 'coc-tabnine',    "ai based all language lsp
 	"    \ 'coc-tsserver',   "javascript/typescript
 	"\]
+Plug 'pangloss/vim-javascript' " Git wrapper
 
-Plugin 'pangloss/vim-javascript' " Git wrapper
+Plug 'tpope/vim-fugitive' " Git wrapper
+Plug 'tpope/vim-surround' " Pair braces
+Plug 'tpope/vim-unimpaired' " Add some usefull mappings with '[' and ']'
+Plug 'tpope/vim-repeat' " Repeat plugin mappings
 
-Plugin 'tpope/vim-fugitive' " Git wrapper
-Plugin 'tpope/vim-surround' " Pair braces
-Plugin 'tpope/vim-unimpaired' " Add some usefull mappings with '[' and ']'
-Plugin 'tpope/vim-repeat' " Repeat plugin mappings
+Plug 'altercation/vim-colors-solarized' " Colorscheme
 
-Plugin 'altercation/vim-colors-solarized' " Colorscheme
+Plug 'vim-airline/vim-airline' " Neat Status Line
+Plug 'vim-airline/vim-airline-themes'
 
-Plugin 'vim-airline/vim-airline' " Neat Status Line
-Plugin 'vim-airline/vim-airline-themes'
-
-Plugin 'aserebryakov/vim-todo-lists' " ToDo List
-
-" Install plugins after fresh start
-if vundleIsSetup == 0
-	echo "Installing Vundles, please ignore key map error messages"
-	echo ""
-	:PluginInstall
-endif
+Plug 'aserebryakov/vim-todo-lists' " ToDo List
 
 " Add all Plugins before this
-call vundle#end()
+call plug#end()
 
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+"" Install plugins after fresh start
+"if vundleIsSetup == 0
+"	echo "Installing Vundles, please ignore key map error messages"
+"	echo ""
+"	:PluginInstall
+"endif
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              General settings                                "
