@@ -52,3 +52,4 @@ inodes
 systemd
 buildbot
 systemctl
+jinja
