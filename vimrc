@@ -97,6 +97,7 @@ let g:coc_disable_startup_warning = 1
 	let g:coc_global_extensions = []
 	let g:coc_global_extensions += ['coc-json']
 	let g:coc_global_extensions += ['coc-pyright']
+	let g:coc_global_extensions += ['coc-pydocstring']
 	let g:coc_global_extensions += ['coc-tabnine']
 	let g:coc_global_extensions += ['coc-tsserver']
 
