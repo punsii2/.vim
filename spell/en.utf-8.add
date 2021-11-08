@@ -53,3 +53,5 @@ systemd
 buildbot
 systemctl
 jinja
+couchdb
+masterd
