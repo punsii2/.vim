@@ -107,11 +107,12 @@ let g:coc_disable_startup_warning = 1
 	"    \ 'coc-tabnine',    "ai based all language lsp
 	"    \ 'coc-tsserver',   "javascript/typescript
 	"\]
-Plug 'pangloss/vim-javascript' " Git wrapper
+"Plug 'pangloss/vim-javascript' " JS indentation/hightlighting. May be no "needed?
 
 Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'tpope/vim-surround' " Pair braces
 Plug 'tpope/vim-unimpaired' " Add some usefull mappings with '[' and ']'
+Plug 'tpope/vim-abolish' " Convert MixedCase/camelCase/snake_case
 Plug 'tpope/vim-repeat' " Repeat plugin mappings
 
 Plug 'altercation/vim-colors-solarized' " Colorscheme
