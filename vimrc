@@ -96,17 +96,13 @@ let g:coc_disable_startup_warning = 1
 	" configure coc-install targets
 	let g:coc_global_extensions = []
 	let g:coc_global_extensions += ['coc-json']
-	let g:coc_global_extensions += ['coc-pyright']
 	let g:coc_global_extensions += ['coc-pydocstring']
+	let g:coc_global_extensions += ['coc-pyright']
+	let g:coc_global_extensions += ['coc-sh']
 	let g:coc_global_extensions += ['coc-tabnine']
 	let g:coc_global_extensions += ['coc-tsserver']
+	let g:coc_global_extensions += ['coc-vimlsp']
 
-	"let g:coc_global_extensions = [
-	"    \ 'coc-json',       "json
-	"    \ 'coc-pyright',    "python3
-	"    \ 'coc-tabnine',    "ai based all language lsp
-	"    \ 'coc-tsserver',   "javascript/typescript
-	"\]
 "Plug 'pangloss/vim-javascript' " JS indentation/hightlighting. May be no "needed?
 
 Plug 'tpope/vim-fugitive' " Git wrapper
