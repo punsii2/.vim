@@ -62,11 +62,17 @@ let g:ale_fixers = {
 \		'yapf',
 \		'trim_whitespace',
 \	],
+\	'svelte': [
+\		'eslint',
+\		'prettier',
+\		'prettier_standard',
+\	],
 \	'xml': [
 \		'xmllint',
 \	],
 \}
 
+let g:ale_linter_aliases = {'svelte': ['css', 'javascript']}
 let g:ale_linters = {
 \	'cpp': [
 \		'ccls',
@@ -82,6 +88,10 @@ let g:ale_linters = {
 \	],
 \	'python': [
 \		'pylint',
+\	],
+\	'svelte': [
+\		'stylelint',
+\		'eslint',
 \	],
 \}
 
@@ -101,9 +111,15 @@ let g:coc_disable_startup_warning = 1
 	let g:coc_global_extensions += ['coc-sh']
 	let g:coc_global_extensions += ['coc-tabnine']
 	let g:coc_global_extensions += ['coc-tsserver']
+	let g:coc_global_extensions += ['coc-svelte']
 	let g:coc_global_extensions += ['coc-vimlsp']
 
-"Plug 'pangloss/vim-javascript' " JS indentation/hightlighting. May be no "needed?
+Plug 'evanleck/vim-svelte' " svelte indentation/hightlighting.
+let g:svelte_preprocessors = ['typescript']
+Plug 'pangloss/vim-javascript' " JS indentation/hightlighting.
+Plug 'HerringtonDarkholme/yats.vim' " Typescript hightlighting
+
+Plug 'preservim/nerdtree' " File explorer
 
 Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'tpope/vim-surround' " Pair braces

@@ -1,6 +1,8 @@
 {
     "diagnostic.displayByAle": true,
     "pydocstring.formatter": "google",
+    "pydocstring.doqPath": "/home/pm/.local/bin/doq",
     "python.formatting.provider": "black",
-    "python.formatting.blackPath": "/usr/bin/black"
+    "python.formatting.blackPath": "/usr/bin/black",
+    "svelte.enable-ts-plugin": true
 }
