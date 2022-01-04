@@ -120,6 +120,7 @@ Plug 'pangloss/vim-javascript' " JS indentation/hightlighting.
 Plug 'HerringtonDarkholme/yats.vim' " Typescript hightlighting
 
 Plug 'preservim/nerdtree' " File explorer
+Plug 'Xuyuanp/nerdtree-git-plugin' " Git status extension
 
 Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'tpope/vim-surround' " Pair braces
@@ -361,6 +362,12 @@ set number
 let mapleader=","
 let maplocalleader=","
 
+" Start NERDTree. If a file is specified, move the cursor to its window.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
 " Use tab for trigger completion with characters ahead and navigate. (coc)
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -511,9 +518,6 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-" Toggle TagList-window
-noremap <leader>l :TlistToggle<cr><C-w>10h
 
 " Toggle light/dark theme
 noremap <silent> <leader>c :ToggleBG<cr>
