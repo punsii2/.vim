@@ -120,6 +120,7 @@ Plug 'pangloss/vim-javascript' " JS indentation/hightlighting.
 Plug 'HerringtonDarkholme/yats.vim' " Typescript hightlighting
 
 Plug 'preservim/nerdtree' " File explorer
+let NERDTreeShowHidden=1
 Plug 'Xuyuanp/nerdtree-git-plugin' " Git status extension
 
 Plug 'tpope/vim-fugitive' " Git wrapper
