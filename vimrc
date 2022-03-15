@@ -123,6 +123,8 @@ Plug 'preservim/nerdtree' " File explorer
 let NERDTreeShowHidden=1
 Plug 'Xuyuanp/nerdtree-git-plugin' " Git status extension
 
+Plug 'airblade/vim-gitgutter'
+
 Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'tpope/vim-surround' " Pair braces
 Plug 'tpope/vim-unimpaired' " Add some usefull mappings with '[' and ']'
@@ -318,15 +320,18 @@ function! Airline_solar_adjust()
 endfunction
 
 function! Custom_hi()
-	" Highlight column 81
-	set colorcolumn=81
+    " Highlight column 81
+    set colorcolumn=81
+    hi OverLength ctermbg=red guibg=red
+    match OverLength /\%>80v.\+/
+    hi TrailingWhitespace ctermbg=red guibg=red
+    match TrailingWhitespace /\s\+$/
+    hi clear SpellBad
+    hi SpellBad cterm=underline
 
-	hi OverLength ctermbg=red guibg=red
-	match OverLength /\%>80v.\+/
-	hi TrailingWhitespace ctermbg=red guibg=red
-	match TrailingWhitespace /\s\+$/
-	hi clear SpellBad
-	hi SpellBad cterm=underline
+    highlight clear SignColumn
+    let g:gitgutter_set_sign_backgrounds = 1
+    call gitgutter#highlight#define_highlights()
 endfunction
 
 function! Refresh_custom_hi()
