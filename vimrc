@@ -33,6 +33,10 @@ let g:ale_set_balloons = 1
 let g:ale_echo_msg_format = '%linter%: "%s"'
 let g:ale_loclist_msg_format = '%linter%: "%s"'
 
+"Prioritize ale over gitgutter
+"https://github.com/dense-analysis/ale/issues/569#issuecomment-614164735
+let g:ale_sign_priority=11
+
 let g:ale_tex_chktex_options = '-I -n 18 -n 44'
 let g:ale_go_golangci_lint_package = 1
 let g:ale_java_google_java_format_executable = 'java'
@@ -196,6 +200,9 @@ endif
 " Enable mouse
 set mouse=a
 
+" Change omnicomplete behaviour
+"set completeopt +=longest
+
 " Enable autocompletion line in commandline and behaviour
 set wildmenu
 set wildmode=longest:full,full
@@ -267,12 +274,11 @@ set linebreak
 
 " 'Showbreak' is displayed to the left of wrapping lines
 set showbreak=>>
-" Distance from right border before wrapping starts
-" Probably not needed
-" set wrapmargin=2
 
 " Break after 80 chars
-set textwidth=80
+set textwidth=0
+" Distance from right border before wrapping starts
+set wrapmargin=0
 
 " Allow backspacing over everything
 set backspace=indent,eol,start
