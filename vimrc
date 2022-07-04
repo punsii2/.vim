@@ -374,6 +374,12 @@ set number
 let mapleader=","
 let maplocalleader=","
 
+" use j/k to escape insert mode
+imap jj <Esc>
+imap kk <Esc>
+imap kj <Esc>
+imap jk <Esc>
+
 " Start NERDTree. If a file is specified, move the cursor to its window.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
