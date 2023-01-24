@@ -442,7 +442,7 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <space> za
 
 " Courser at bottom
-vnoremap y y`]
+" vnoremap y y`]
 " Courser at last position
 " vmap y ygv<Esc>
 
